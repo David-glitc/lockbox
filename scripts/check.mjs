@@ -22,7 +22,7 @@ try{
  console.log('Lockbox',box);
  if(!process.env.SKIP_BUILD||!fs.existsSync(path.join(root,'site')))
   execFileSync('npx',['next','build'],{cwd:root,stdio:'inherit',env:{...process.env,NEXT_PUBLIC_RPC:RPC,NEXT_PUBLIC_LOCKBOX:box,NEXT_PUBLIC_CHAIN_ID:'677'}});
- const dist=path.join(root,'out');
+ const dist=path.join(root,'site');
  server=http.createServer((q,r)=>{let f=path.join(dist,decodeURIComponent(q.url.split('?')[0]));if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');if(!fs.existsSync(f)){r.statusCode=404;return r.end();}
   r.setHeader('content-type',{'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.json':'application/json','.txt':'text/plain'}[path.extname(f)]||'application/octet-stream');r.end(fs.readFileSync(f));}).listen(SITE);
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});

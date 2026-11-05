@@ -8,6 +8,6 @@ export default function Mine(){
  useEffect(()=>{(async()=>{if(!a||!LOCKBOX)return;try{
   const ids=await client.readContract({address:LOCKBOX,abi:lockboxAbi,functionName:'idsByOwner',args:[a as `0x${string}`]});
   const all=await getLocks([...new Set(ids.map(Number))]);setLocks(all.filter(l=>l.owner.toLowerCase()===a.toLowerCase()).reverse());}catch(e){setErr(errText(e));}})();},[a]);
- return (<><h1>My locks</h1>{!a&&<p className="lead">Connect your wallet to see the locks you own.</p>}{err&&<p className="status err">{err}</p>}
-  {a&&<section className="card"><LockList locks={locks} empty="You do not own any locks."/></section>}</>);
+ return (<><p className="eyebrow">Ledger</p><h1 className="h1s">My locks</h1>{!a&&<p className="lead">Connect your wallet to see the locks you own.</p>}{err&&<p className="status err">{err}</p>}
+  {a&&<section className="panel"><LockList locks={locks} empty="You do not own any locks."/></section>}</>);
 }
