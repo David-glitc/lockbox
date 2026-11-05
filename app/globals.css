@@ -22,3 +22,5 @@ button.primary{background:var(--accent);color:var(--accent-ink);border-color:tra
 dl.facts{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0}dl.facts dt{color:var(--ink2)}dl.facts dd{margin:0;word-break:break-all}
 .tiny{font-size:.82rem;color:var(--ink2)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.launch{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;justify-content:space-between;padding:14px 18px;margin:8px 0 8px;border:2px solid var(--accent);border-radius:14px;background:var(--surface);overflow-wrap:anywhere}.launch span{color:var(--ink2);font-size:.9rem}

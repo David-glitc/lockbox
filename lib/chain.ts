@@ -3,7 +3,7 @@ import {createPublicClient,createWalletClient,custom,defineChain,http,parseAbi,g
 export const CHAIN_ID=Number(process.env.NEXT_PUBLIC_CHAIN_ID||677);
 export const RPC=process.env.NEXT_PUBLIC_RPC||'https://rpc.botchain.ai';
 export const EXPLORER='https://scan.botchain.ai';
-export const LOCKBOX=(process.env.NEXT_PUBLIC_LOCKBOX||'') as Address|'';
+export const LOCKBOX=(process.env.NEXT_PUBLIC_LOCKBOX||'0x199b0d037775c892897a0f873c8a037de7f6cb70') as Address|'';
 export const NPM=(process.env.NEXT_PUBLIC_NPM||'0xDAc3FcFF004d8a8675b94E44941A1a2e3b240090') as Address; // BDEX "B DEX Positions NFT-V1"
 export const chain=defineChain({id:CHAIN_ID,name:'BOT Chain',nativeCurrency:{name:'BOT',symbol:'BOT',decimals:18},rpcUrls:{default:{http:[RPC]}},blockExplorers:{default:{name:'BOTScan',url:EXPLORER}}});
 export const client=createPublicClient({chain,transport:http(RPC,{timeout:20000,retryCount:1}),batch:{multicall:{batchSize:2048}}});
